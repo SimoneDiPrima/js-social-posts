@@ -17,7 +17,7 @@ const postArray = [
 {
     id : 1,
     nome: `Phil Mangione`,
-    userPic : `img/05.jpg`,
+    userPic : `img/01userimage.jpg`,
     birthDate : `04-02-1988`,
     text:`lorem ipsum not laborem success ecc`,
     image:`img/01.jpg`,
@@ -27,7 +27,7 @@ const postArray = [
 {
     id : 2,
     nome: `Enrico Campani`,
-    userPic : `img/04.jpg`,
+    userPic : `img/01userimage.jpg`,
     birthDate : `02-03-1990`,
     text:`lorem ipsum ecc`,
     image:`img/02.jpg`,
@@ -37,7 +37,7 @@ const postArray = [
 {
     id : 3,
     nome: `Fabrizio Mastrobattista`,
-    userPic : `img/03.jpg`,
+    userPic : `img/01userimage.jpg`,
     birthDate : `02-05-1994`,
     text:`lorem ipsum not laborem success ecc`,
     image:`img/03.jpg`,
@@ -47,7 +47,7 @@ const postArray = [
 {
     id : 1,
     nome: `Simone Di Prima`,
-    userPic : `img/02.jpg`,
+    userPic : `img/01userimage.jpg`,
     birthDate : `17-03-1992`,
     text:`lorem ipsum not laborem success ecc`,
     image:`img/04.jpg`,
@@ -57,7 +57,7 @@ const postArray = [
 {
     id : 1,
     nome: `Matilde Paparatto`,
-    userPic : `img/01.jpg`,
+    userPic : `img/01userimage.jpg`,
     birthDate : `07-02-1995`,
     text:`lorem ipsum not laborem success ecc`,
     image:`img/05.jpg`,
@@ -73,19 +73,64 @@ const container = document.getElementById(`container`);
 
 let posts = ` `;
 
+// for(let i=0;i<postArray.length;i++){
+//     const currentPost = postArray[i];
+   
+//     for(let key in currentPost){
+//         if(key === `userPic`){
+//             posts += `<div> <img src="${currentPost[key]}" alt="foto user"/>${currentPost.nome}`
+//             posts += `<p>${currentPost.text}</p>`
+//         }
+//         else if(key === `image`){
+//             posts += `<img src="${currentPost[key]}" alt="foto paesaggio"/>`; 
+//         }
+//     }
+//     posts += `</div>`;
+    
+// }
+// container.classList.add(`text-white`);
+// container.innerHTML = posts;
+
+const card = document.createElement(`div`);
+card.classList.add(`post`);
+container.append(card);
+
+
+
 for(let i=0;i<postArray.length;i++){
     const currentPost = postArray[i];
-   
-    for(let key in currentPost){
-        posts += `<div>${currentPost.nome}`
-        if(key === `userPic`){
-            posts += `<img src="${currentPost[key]}" alt="foto user"/>`;
-        }
-        else if(key === `image`){
-            posts += `<img src="${currentPost[key]}" alt="foto paesaggio"/>`; 
-        }
-    }
-    posts += `</div>`;
     
+    posts += `<div class="post">
+     <div class="post__header">
+    <div class="post-meta">
+      <div class="post-meta__icon">
+        <img class="profile-pic" src="${currentPost.userPic}" alt="Phil Mangione" />
+      </div>
+      <div class="post-meta__data">
+        <div class="post-meta__author">${currentPost.nome}</div>
+        <div class="post-meta__time">${currentPost.birthDate}</div>
+      </div>
+    </div>
+  </div>
+  <div class="post__text">
+   ${currentPost.text}
+  </div>
+  <div class="post__image">
+  <img src="${currentPost.image}" alt="foto paesaggio"/>
+</div>
+<div class="post__footer">
+  <div class="likes js-likes">
+    <div class="likes__cta">
+      <a class="like-button js-like-button" href="#" data-postid="1">
+        <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+        <span class="like-button__label">Mi Piace</span>
+      </a>
+    </div>
+    <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone</div>
+  </div>
+</div>
+</div>
+</div>
+`
 }
 container.innerHTML = posts;

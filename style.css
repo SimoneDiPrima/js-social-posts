@@ -123,3 +123,10 @@ h1 {
     color: #0CD977;
     cursor: default;
 }
+.bg-white{
+    background-color:white;
+}
+.header-card{
+    display:flex;
+}
+.card{padding:50px;}
