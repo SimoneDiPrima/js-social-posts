@@ -94,7 +94,12 @@ let posts = ` `;
 const card = document.createElement(`div`);
 card.classList.add(`post`);
 container.append(card);
-
+let counterlike = 0;
+const buttonlikes = button();
+const counterlikess = counterlikes();
+buttonlikes.addEventListener(`click`,{
+  
+})
 
 
 for(let i=0;i<postArray.length;i++){
@@ -121,12 +126,14 @@ for(let i=0;i<postArray.length;i++){
 <div class="post__footer">
   <div class="likes js-likes">
     <div class="likes__cta">
-      <a class="like-button js-like-button" href="#" data-postid="1">
-        <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-        <span class="like-button__label">Mi Piace</span>
+    <button>
+    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+    <span class="like-button__label"${buttonlikes} >Mi Piace</span>
+    <button>
+      
       </a>
     </div>
-    <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone</div>
+    <div class="likes__counter">${counterlikess} hanno messo mi piace</div>
   </div>
 </div>
 </div>
@@ -134,3 +141,17 @@ for(let i=0;i<postArray.length;i++){
 `
 }
 container.innerHTML = posts;
+
+function button(){
+    let button= ``;
+     button = document.createElement("button");
+    container.appendChild(button)
+    button.innerText = `mi piace`
+    return button;
+}
+
+function counterlikes(){
+    let counterlikes = 0;
+    counterlikes ++;
+    return counterlikes;
+}
