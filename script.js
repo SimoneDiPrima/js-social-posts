@@ -41,7 +41,7 @@ const postArray = [
     birthDate : `02-05-1994`,
     text:`lorem ipsum not laborem success ecc`,
     image:`img/03.jpg`,
-    likes:85,
+    likes:89,
 
 },
 {
@@ -51,7 +51,7 @@ const postArray = [
     birthDate : `17-03-1992`,
     text:`lorem ipsum not laborem success ecc`,
     image:`img/04.jpg`,
-    likes:85,
+    likes:55,
 
 },
 {
@@ -61,7 +61,7 @@ const postArray = [
     birthDate : `07-02-1995`,
     text:`lorem ipsum not laborem success ecc`,
     image:`img/05.jpg`,
-    likes:85,
+    likes:125,
 
 }
 ]
@@ -124,18 +124,16 @@ for(let i=0;i<postArray.length;i++){
   <img src="${currentPost.image}" alt="foto paesaggio"/>
 </div>
 <div class="post__footer">
-  <div class="likes js-likes">
-    <div class="likes__cta">
-    <button>
-    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-    <span class="like-button__label"${buttonlikes} >Mi Piace</span>
-    <button>
-      
-      </a>
-    </div>
-    <div class="likes__counter">${counterlikess} hanno messo mi piace</div>
-  </div>
-</div>
+          <div class="likes js-likes">
+            <div class="likes__cta">
+              <a class="like-button js-like-button" href="#" data-postid="1">
+                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                <span class="like-button__label">Mi Piace</span>
+              </a>
+            </div>
+            <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${currentPost.likes}</b> persone</div>
+          </div>
+        </div>
 </div>
 </div>
 `
