@@ -95,11 +95,7 @@ const card = document.createElement(`div`);
 card.classList.add(`post`);
 container.append(card);
 let counterlike = 0;
-const buttonlikes = button();
-const counterlikess = counterlikes();
-buttonlikes.addEventListener(`click`,{
-  
-})
+
 
 
 for(let i=0;i<postArray.length;i++){
@@ -126,12 +122,12 @@ for(let i=0;i<postArray.length;i++){
 <div class="post__footer">
           <div class="likes js-likes">
             <div class="likes__cta">
-              <a class="like-button js-like-button" href="#" data-postid="1">
+              <button class="like-button js-like-button" href="#" data-postid="${currentPost.id}">
                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                 <span class="like-button__label">Mi Piace</span>
-              </a>
+              </button>
             </div>
-            <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${currentPost.likes}</b> persone</div>
+            <div class="likes__counter">Piace a <b id="like-counter-${currentPost.id}" class="js-likes-counter">${currentPost.likes}</b> persone</div>
           </div>
         </div>
 </div>
@@ -140,16 +136,22 @@ for(let i=0;i<postArray.length;i++){
 }
 container.innerHTML = posts;
 
-function button(){
-    let button= ``;
-     button = document.createElement("button");
-    container.appendChild(button)
-    button.innerText = `mi piace`
-    return button;
+const likesButton = document.querySelectorAll(`.js-like-button`);
+
+for(let i =0; i< likesButton.length ; i++){
+  // creo una costante per usarmela al posto dell array
+  const button = likesButton[i];
+button.addEventListener(`click`,()=>{
+  button.classList.add(`like-button--liked`);
+// recupero l id grazie al dataset
+  const postId = button.dataset.postid;
+  // recupero il numero dei like grazie all id 
+  const counterLikes = document.getElementById(`like-counter-${postId}`)
+//  creo una variabile da incrementare che mi recuperi il testo di counterLikes
+  let likes = parseInt(counterLikes.innerText);
+  // stampo incrementando il testo di counterLikes
+  counterLikes.innerText = ++likes;
+})
 }
 
-function counterlikes(){
-    let counterlikes = 0;
-    counterlikes ++;
-    return counterlikes;
-}
+
